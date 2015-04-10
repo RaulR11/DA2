@@ -1,0 +1,147 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>MasterPages Demo</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style2 {
+            height: 300px;
+            width: 665px;
+        }
+        .nuevoEstilo1 {
+            vertical-align: top;
+            background-color: #D6D6D6;
+            width: 200px;
+            height: 300px;
+        }
+        .nuevoEstilo2 {
+            background-color: #999999;
+            height: 48px;
+            border-bottom-style: solid;
+            border-bottom-width: thick;
+            border-bottom-color: #336600;
+        }
+        .auto-style3 {
+            width: 247px;
+            height: 135px;
+        }
+        .nuevoEstilo3 {
+            text-align: center;
+        }
+        .auto-style6 {
+            vertical-align: top;
+            background-color: #D6D6D6;
+            width: 250px;
+            height: 300px;
+        }
+        .auto-style7 {
+            height: 106px;
+            width: 665px;
+        }
+        .auto-style8 {
+            width: 247px;
+            height: 118px;
+        }
+        .nuevoEstilo4 {
+            background-color: #99CCFF;
+        }
+        .auto-style9 {
+            background-color: #99CCFF;
+            width: 250px;
+            height: 106px;
+        }
+        .nuevoEstilo5 {
+            height: 45px;
+        }
+        .nuevoEstilo6 {
+        }
+        .nuevoEstilo7 {
+            background-color: #00FFFF;
+        }
+        .nuevoEstilo8 {
+            background-color: #008000;
+        }
+        .nuevoEstilo9 {
+            background-color: #00FFFF;
+            border-bottom-style: solid;
+            border-bottom-width: thick;
+            border-bottom-color: #0000FF;
+        }
+        .nuevoEstilo10 {
+            background-color: #00FFFF;
+            border-bottom-style: dashed;
+            border-bottom-width: thin;
+            border-bottom-color: #0000FF;
+        }
+        .nuevoEstilo11 {
+            background-color: #99CCFF;
+            border-bottom-style: double;
+            border-bottom-width: thick;
+            border-bottom-color: #000000;
+        }
+        .auto-style10 {
+            font-size: xx-large;
+        }
+        .nuevoEstilo12 {
+            background-image: url('/cielo.jpg');
+        }
+        .nuevoEstilo13 {
+            background-image: url('/pasto.jpg');
+        }
+        .nuevoEstilo14 {
+            background-repeat: no-repeat;
+            background-image: url('/cielo.jpg');
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table class="nuevoEstilo4">
+            <tr class="nuevoEstilo10">
+                <td class="nuevoEstilo12">
+                    <img class="auto-style3" src="Images/home.gif" /></td>
+                <td class="nuevoEstilo12">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="auto-style10"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COLEGIO&nbsp;</strong></span></p>
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style9">
+                    <img alt="" class="auto-style8" src="Images/sistemadematricula.png" /></td>
+                <td class="auto-style7">
+                    <h2 class="nuevoEstilo4">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        REGISTRO DEL COLEGIO</h2>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style6">Menu<br />
+                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged">
+                    </asp:TreeView>
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                </td>
+                <td class="auto-style2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Copyright © 2015,Colegio.<br />
+                    urb umacollo s/n
+                    <br />
+                    telf: 459875</td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
