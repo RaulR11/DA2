@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections;
+using System.Data.SqlClient;
 public class Docente
 {
     private string Nombre;
@@ -30,11 +31,14 @@ public class Docente
 
     public override string ToString()
     {
-        return "Nombre: " + Nombre + "   Codigo: " + Codigo + "\n" + "\n     DNI:    " + DNI + "\n       Especialidad: " + Especialidad + "\n      Email: "  + Email + "\n      Telefono: " + Telefono;// +ptr;
+        return "Nombre: " + Nombre + "   Codigo: " + Codigo + "\n" + "\n     DNI:    " + DNI + "\n       Especialidad: " + Especialidad + "\n      Email: " + Email + "\n      Telefono: " + Telefono;// +ptr;
     }
 }
 public partial class pagina1 : System.Web.UI.Page
 {
+
+    string connectionString = "workstation id=colegio-fer.mssql.somee.com;packet size=4096;user id=ferjesus_SQLLogin_1;pwd=val7f5xp4s;data source=colegio-fer.mssql.somee.com;persist security info=False;initial catalog=colegio-fer";
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -49,7 +53,7 @@ public partial class pagina1 : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
 
-        Docente doc = new Docente(TextBox1.Text.ToString(), TextBox5.Text.ToString(),
+        /*Docente doc = new Docente(TextBox1.Text.ToString(), TextBox5.Text.ToString(),
             TextBox2.Text.ToString(), DropDownList1.Text.ToString(), TextBox3.Text.ToString(), TextBox4.Text.ToString());
         try
         {
@@ -61,27 +65,112 @@ public partial class pagina1 : System.Web.UI.Page
         {
             TextBox5.Text = argumentException.ToString();
         }
+         * */
+        if (!this.IsValid) return;
+        string insertSQL = "INSERT INTO docentes VALUES(" +
+     txtCodigo.Text + ", '" + txtNombres.Text + "', '" +
+         txtDireccion.Text + "', '" + txtTelefono.Text + "', '" +
+         txtMail.Text + "', " + txtEdad.Text + ")";
+        SqlConnection con = new SqlConnection(connectionString);
+        SqlCommand cmd = new SqlCommand(insertSQL, con);
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+            lblResult.Text = "DOCENTE REGISTRADO CON EXITO";
+            con.Close();
+            txtCodigo.Text = "";
+            txtNombres.Text = "";
+            txtDireccion.Text = "";
+            txtTelefono.Text = "";
+            txtMail.Text = "";
+            txtEdad.Text = "";
+        }
+        catch (Exception err)
+        {
+            lblResult.Text = "ERROR AL REGISTRAR docente";
+            lblResult.Text += err.Message;
+        }
 
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        TextBox1.Text = "";
-        TextBox5.Text = "";
-        TextBox2.Text = "";
-
-        TextBox3.Text = "";
-        TextBox4.Text = "";
+        txtCodigo.Text = "";
+        txtNombres.Text = "";
+        txtDireccion.Text = "";
+        txtTelefono.Text = "";
+        txtMail.Text = "";
+        txtEdad.Text = "";
     }
     protected void Button3_Click(object sender, EventArgs e)
     {
-       if(tt.ContainsKey(TextBox5.Text.ToString()))
-       {TextBox6.Text = "DOCENTE ENCONTRADO";
-           tt.ToString();
-       }
-        else
-           TextBox6.Text = "DOCENTE no ENCONTRADO , ingrese otra ves";
-        // TextBox6.Text = "La clave se encuentra?: " +
-          //      table.ContainsKey(TextBox5.Text);
+        lblResult.Text = "";
+        string selectSQL = "SELECT * FROM docentes where codigo=" + txtCodigo.Text;
+        SqlConnection con = new SqlConnection(connectionString);
+        SqlCommand cmd = new SqlCommand(selectSQL, con);
+        SqlDataReader dr;
+        try
+        {
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+
+                txtNombres.Text = dr[1].ToString();
+                txtDireccion.Text = dr["direccion"].ToString();
+                txtTelefono.Text = dr[3].ToString();
+                txtMail.Text = dr[4].ToString();
+                txtEdad.Text = dr[5].ToString();
+            }
+            con.Close();
+            dr.Close();
+        }
+        catch (Exception err)
+        {
+            lblResult.Text = "ERRRO AL REGIUSTRAR EL CLIENTE";
+            lblResult.Text += err.Message;
+        }
+    }
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        string selectSQL = "SELECT * FROM docentes";
+        SqlConnection con = new SqlConnection(connectionString);
+        SqlCommand cmd = new SqlCommand(selectSQL, con);
+        SqlDataReader dr;
+        try
+        {
+            con.Open();
+            dr = cmd.ExecuteReader();
+            GridView1.DataSource = dr;
+            GridView1.DataBind();
+            con.Close();
+        }
+        catch (Exception err)
+        {
+            lblResult.Text = "ERROR AL REGISTRAR CLIENTE";
+            lblResult.Text += err.Message;
+        }
+    }
+    protected void Button5_Click(object sender, EventArgs e)
+    {
+        /* string selectSQL = "DELETF FROM docentes  where codigo=" + txtCodigo.Text; ;
+         SqlConnection con = new SqlConnection(connectionString);
+         SqlCommand cmd = new SqlCommand(selectSQL, con);
+         SqlDataReader dr;
+         try
+         {
+             con.Open();
+             dr = cmd.ExecuteReader();
+             GridView1.DataSource = dr;
+             GridView1.DataBind();
+             con.Close();
+        
+         }
+         catch (Exception err)
+         {
+             lblResult.Text = "ERROR AL REGISTRAR CLIENTE";
+             lblResult.Text += err.Message;
+         }*/
     }
 }

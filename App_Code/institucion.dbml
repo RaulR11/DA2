@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DataSource" Class="institucionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=colegio-fer.mssql.somee.com;Persist Security Info=True;User ID=ferjesus_SQLLogin_1" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.alumnos" Member="alumnos">
+    <Type Name="alumnos">
+      <Column Name="codigo" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DNI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="grado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="seccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[level]" Member="level" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Curss" Member="Curss">
+    <Type Name="Curss">
+      <Column Name="CodigoCurso" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreCurso" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cod_alumno" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Nota1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Nota2" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Nota3" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="promedio" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

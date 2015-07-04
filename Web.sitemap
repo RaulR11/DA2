@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="hoome.aspx" title="Home"  description="">
-        <siteMapNode url="Docentes.aspx" title="Docentes"  description="" />
-        <siteMapNode url="pagina2.aspx" title="NOTAS REGISTRO"  description="" />
+        <siteMapNode url="Docentes.aspx" title="BUSCAR DOCENTES"  description="" />
+      <siteMapNode url="cursos.aspx" title="CONTROL DE NOTAS"  description="" >
+        <siteMapNode url="vernotas.aspx" title="VER NOTAS DE UN ALUMNO"  description="" />
+      </siteMapNode>
         <siteMapNode url="pagina4.aspx" title="ALUMNOS"  description="" />
+      <siteMapNode url="docentes_add.aspx" title="AGREGAR NUEVOS DOCENTES"  description="" />
     </siteMapNode>
 </siteMap>
